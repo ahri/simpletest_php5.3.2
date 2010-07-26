@@ -72,7 +72,7 @@ class SimpleRoute {
      *    @return SimpleSocket       New socket.
      *    @access public
      */
-    function &createConnection($method, $timeout) {
+    function createConnection($method, $timeout) {
         $default_port = ('https' == $this->_url->getScheme()) ? 443 : 80;
         $socket = &$this->_createSocket(
                 $this->_url->getScheme() ? $this->_url->getScheme() : 'http',
@@ -96,7 +96,7 @@ class SimpleRoute {
      *    @return SimpleSocket/SimpleSecureSocket New socket.
      *    @access protected
      */
-    function &_createSocket($scheme, $host, $port, $timeout) {
+    function _createSocket($scheme, $host, $port, $timeout) {
         if (in_array($scheme, array('https'))) {
             $socket = new SimpleSecureSocket($host, $port, $timeout);
         } else {
@@ -166,7 +166,7 @@ class SimpleProxyRoute extends SimpleRoute {
      *    @return SimpleSocket        New socket.
      *    @access public
      */
-    function &createConnection($method, $timeout) {
+    function createConnection($method, $timeout) {
         $socket = &$this->_createSocket(
                 $this->_proxy->getScheme() ? $this->_proxy->getScheme() : 'http',
                 $this->_proxy->getHost(),
@@ -223,7 +223,7 @@ class SimpleHttpRequest {
      *                                 complete web page.
      *    @access public
      */
-    function &fetch($timeout) {
+    function fetch($timeout) {
         $socket = &$this->_route->createConnection($this->_encoding->getMethod(), $timeout);
         if (! $socket->isError()) {
             $this->_dispatchRequest($socket, $this->_encoding);
@@ -278,7 +278,7 @@ class SimpleHttpRequest {
      *    @return SimpleHttpResponse    Parsed response object.
      *    @access protected
      */
-    function &_createResponse(&$socket) {
+    function _createResponse(&$socket) {
         $response = new SimpleHttpResponse(
                 $socket,
                 $this->_route->getUrl(),

@@ -83,7 +83,7 @@ require_once('socket.php');
 
 class Telnet {
     ...
-    function &amp;connect($ip, $port, $username, $password) {
+    function amp;connect($ip, $port, $username, $password) {
         $socket = &amp;new Socket($ip, $port);
         $socket-&gt;read( ... );
         ...
@@ -113,7 +113,7 @@ require_once('socket.php');
 
 class Telnet {
     ...
-    <strong>function &amp;connect(&amp;$socket, $username, $password) {
+    <strong>function amp;connect(&amp;$socket, $username, $password) {
         $socket-&gt;read( ... );
         ...
     }</strong>
@@ -149,7 +149,7 @@ require_once('socket.php');
 
 class Telnet {
     ...<strong>
-    function &amp;connect($ip, $port, $username, $password, $socket = false) {
+    function amp;connect($ip, $port, $username, $password, $socket = false) {
         if (!$socket) {
             $socket = &amp;new Socket($ip, $port);
         }
@@ -194,7 +194,7 @@ class Telnet {<strong>
         $this-&gt;_network = &amp;$network;
     }</strong>
     ...
-    function &amp;connect($ip, $port, $username, $password) {<strong>
+    function amp;connect($ip, $port, $username, $password) {<strong>
         $socket = &amp;$this-&gt;_network-&gt;createSocket($ip, $port);
         $socket-&gt;read( ... );</strong>
         ...
@@ -243,13 +243,13 @@ require_once('socket.php');
 
 class Telnet {
     ...
-    function &amp;connect($ip, $port, $username, $password) {<strong>
+    function amp;connect($ip, $port, $username, $password) {<strong>
         $socket = &amp;$this-&gt;_createSocket($ip, $port);</strong>
         $socket-&gt;read( ... );
         ...
     }<strong>
     
-    function &amp;_createSocket($ip, $port) {
+    function amp;_createSocket($ip, $port) {
         return new Socket($ip, $port);
     }</strong>
 }
@@ -269,7 +269,7 @@ class Telnet {
         $this-&gt;Telnet();
     }
     
-    function &amp;_createSocket() {
+    function amp;_createSocket() {
         return $this-&gt;_mock;
     }
 }</strong>

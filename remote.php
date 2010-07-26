@@ -74,7 +74,7 @@ class RemoteTestCase {
      *    @return SimpleBrowser           New browser.
      *    @access protected
      */
-    function &_createBrowser() {
+    function _createBrowser() {
         $browser = new SimpleBrowser();
         return $browser;
     }
@@ -85,7 +85,7 @@ class RemoteTestCase {
      *    @return SimpleTestXmlListener      XML reader.
      *    @access protected
      */
-    function &_createParser(&$reporter) {
+    function _createParser(&$reporter) {
         $parser = new SimpleTestXmlParser($reporter);
         return $parser;
     }

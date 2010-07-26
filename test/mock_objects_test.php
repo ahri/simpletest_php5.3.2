@@ -432,7 +432,7 @@ class TestOfMockExpectationsThatPass extends UnitTestCase {
 }
 
 class MockWithInjectedTestCase extends SimpleMock {
-    function &_getCurrentTestCase() {
+    function _getCurrentTestCase() {
         $context = &SimpleTest::getContext();
         $test = &$context->getTest();
         return $test->getMockedTest();
@@ -467,7 +467,7 @@ class TestOfMockExpectations extends UnitTestCase {
         $this->test = new MockSimpleTestCase();
     }
 
-    function &getMockedTest() {
+    function getMockedTest() {
         return $this->test;
     }
 

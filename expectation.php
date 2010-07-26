@@ -73,7 +73,7 @@ class SimpleExpectation {
      *    @return SimpleDumper    Current value dumper.
      *    @access protected
      */
-    function &_getDumper() {
+    function _getDumper() {
         if (! $this->_dumper) {
             $dumper = new SimpleDumper();
             return $dumper;

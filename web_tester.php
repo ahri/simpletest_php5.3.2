@@ -472,7 +472,7 @@ class WebTestCase extends SimpleTestCase {
      *    @return SimpleBrowser     Current test browser object.
      *    @access public
      */
-    function &getBrowser() {
+    function getBrowser() {
         return $this->_browser;
     }
     
@@ -502,7 +502,7 @@ class WebTestCase extends SimpleTestCase {
      *    @return TestBrowser           New browser.
      *    @access public
      */
-    function &createBrowser() {
+    function createBrowser() {
         $browser = new SimpleBrowser();
         return $browser;
     }

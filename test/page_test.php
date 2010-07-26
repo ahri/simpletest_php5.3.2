@@ -512,7 +512,7 @@ class TestOfFormsCreatedFromEventStream extends UnitTestCase {
 
 class TestOfPageScraping extends UnitTestCase {
 
-    function &parse($response) {
+    function parse($response) {
         $builder = new SimplePageBuilder();
         $page = &$builder->parse($response);
         return $page;

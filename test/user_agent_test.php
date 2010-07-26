@@ -60,7 +60,7 @@ class TestOfAdditionalHeaders extends UnitTestCase {
 
 class TestOfBrowserCookies extends UnitTestCase {
 
-    function &_createStandardResponse() {
+    function _createStandardResponse() {
         $response = new MockSimpleHttpResponse();
         $response->setReturnValue("isError", false);
         $response->setReturnValue("getContent", "stuff");
@@ -68,7 +68,7 @@ class TestOfBrowserCookies extends UnitTestCase {
         return $response;
     }
     
-    function &_createCookieSite($header_lines) {
+    function _createCookieSite($header_lines) {
         $headers = new SimpleHttpHeaders($header_lines);
         
         $response = new MockSimpleHttpResponse();
@@ -81,7 +81,7 @@ class TestOfBrowserCookies extends UnitTestCase {
         return $request;
     }
     
-    function &_createMockedRequestUserAgent(&$request) {
+    function _createMockedRequestUserAgent(&$request) {
         $agent = new MockRequestUserAgent();
         $agent->setReturnReference('_createHttpRequest', $request);
         $agent->SimpleUserAgent();
@@ -200,7 +200,7 @@ class TestOfBrowserCookies extends UnitTestCase {
 
 class TestOfHttpRedirects extends UnitTestCase {
     
-    function &createRedirect($content, $redirect) {
+    function createRedirect($content, $redirect) {
         $headers = new MockSimpleHttpHeaders();
         $headers->setReturnValue('isRedirect', (boolean)$redirect);
         $headers->setReturnValue('getLocation', $redirect);
@@ -310,7 +310,7 @@ class TestOfHttpRedirects extends UnitTestCase {
 
 class TestOfBadHosts extends UnitTestCase {
     
-    function &_createSimulatedBadHost() {
+    function _createSimulatedBadHost() {
         $response = new MockSimpleHttpResponse();
         $response->setReturnValue('isError', true);
         $response->setReturnValue('getError', 'Bad socket');

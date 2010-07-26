@@ -148,7 +148,7 @@ class TestOfHistory extends UnitTestCase {
 
 class TestOfParsedPageAccess extends UnitTestCase {
 
-    function &loadPage(&$page) {
+    function loadPage(&$page) {
         $response = new MockSimpleHttpResponse($this);
 
         $agent = new MockSimpleUserAgent($this);
@@ -227,7 +227,7 @@ class TestOfParsedPageAccess extends UnitTestCase {
 
 class TestOfBrowserNavigation extends UnitTestCase {
 
-    function &createBrowser(&$agent, &$page) {
+    function createBrowser(&$agent, &$page) {
         $browser = new MockParseSimpleBrowser();
         $browser->setReturnReference('_createUserAgent', $agent);
         $browser->setReturnReference('_parse', $page);
@@ -523,14 +523,14 @@ class TestOfBrowserNavigation extends UnitTestCase {
 
 class TestOfBrowserFrames extends UnitTestCase {
 
-    function &createBrowser(&$agent) {
+    function createBrowser(&$agent) {
         $browser = new MockUserAgentSimpleBrowser();
         $browser->setReturnReference('_createUserAgent', $agent);
         $browser->SimpleBrowser();
         return $browser;
     }
 
-    function &createUserAgent($pages) {
+    function createUserAgent($pages) {
         $agent = new MockSimpleUserAgent();
         foreach ($pages as $url => $raw) {
             $url = new SimpleUrl($url);

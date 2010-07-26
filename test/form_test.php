@@ -9,7 +9,7 @@ Mock::generate('SimplePage');
 
 class TestOfForm extends UnitTestCase {
     
-    function &page($url, $action = false) {
+    function page($url, $action = false) {
         $page = new MockSimplePage();
         $page->setReturnValue('getUrl', new SimpleUrl($url));
         $page->setReturnValue('expandUrl', new SimpleUrl($url));

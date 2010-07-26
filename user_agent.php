@@ -211,7 +211,7 @@ class SimpleUserAgent {
      *    @return SimpleHttpResponse        Hopefully the target page.
      *    @access public
      */
-    function &fetchResponse($url, $encoding) {
+    function fetchResponse($url, $encoding) {
         if ($encoding->getMethod() != 'POST') {
             $url->addRequestParameters($encoding);
             $encoding->clear();
@@ -236,7 +236,7 @@ class SimpleUserAgent {
      *    @return SimpleHttpResponse             Hopefully the target page.
      *    @access private
      */
-    function &_fetchWhileRedirected($url, $encoding) {
+    function _fetchWhileRedirected($url, $encoding) {
         $redirects = 0;
         do {
             $response = &$this->_fetch($url, $encoding);
@@ -264,7 +264,7 @@ class SimpleUserAgent {
      *    @return SimpleHttpResponse              Headers and hopefully content.
      *    @access protected
      */
-    function &_fetch($url, $encoding) {
+    function _fetch($url, $encoding) {
         $request = &$this->_createRequest($url, $encoding);
         $response = &$request->fetch($this->_connection_timeout);
         return $response;
@@ -277,7 +277,7 @@ class SimpleUserAgent {
      *    @return SimpleHttpRequest             New request.
      *    @access private
      */
-    function &_createRequest($url, $encoding) {
+    function _createRequest($url, $encoding) {
         $request = &$this->_createHttpRequest($url, $encoding);
         $this->_addAdditionalHeaders($request);
         if ($this->_cookies_enabled) {
@@ -294,7 +294,7 @@ class SimpleUserAgent {
      *    @return SimpleHttpRequest              New request object.
      *    @access protected
      */
-    function &_createHttpRequest($url, $encoding) {
+    function _createHttpRequest($url, $encoding) {
         $request = new SimpleHttpRequest($this->_createRoute($url), $encoding);
         return $request;
     }
@@ -305,7 +305,7 @@ class SimpleUserAgent {
      *    @return SimpleRoute     Route to take to fetch URL.
      *    @access protected
      */
-    function &_createRoute($url) {
+    function _createRoute($url) {
         if ($this->_proxy) {
             $route = new SimpleProxyRoute(
                     $url,

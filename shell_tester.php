@@ -316,7 +316,7 @@ class ShellTestCase extends SimpleTestCase {
      *    @return Shell        Current shell.
      *    @access protected
      */
-    function &_getShell() {
+    function _getShell() {
         return $this->_current_shell;
     }
 
@@ -325,7 +325,7 @@ class ShellTestCase extends SimpleTestCase {
      *    @return Shell        New shell object.
      *    @access protected
      */
-    function &_createShell() {
+    function _createShell() {
         $shell = new SimpleShell();
         return $shell;
     }

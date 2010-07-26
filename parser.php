@@ -578,7 +578,7 @@ class SimpleHtmlSaxParser {
      *    @access public
      *    @static
      */
-    function &createLexer(&$parser) {
+    function createLexer(&$parser) {
         $lexer = new SimpleHtmlLexer($parser);
         return $lexer;
     }
