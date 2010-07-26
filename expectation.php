@@ -211,7 +211,7 @@ class FalseExpectation extends SimpleExpectation {
      *    @access public
      */
     function testMessage($compare) {
-        $dumper = &$this->_getDumper();
+        $dumper = $this->_getDumper();
         return 'Expected false, got [' . $dumper->describeValue($compare) . ']';
     }
 }
@@ -795,7 +795,7 @@ class IsAExpectation extends SimpleExpectation {
      *    @access public
      */
     function testMessage($compare) {
-        $dumper = &$this->_getDumper();
+        $dumper = $this->_getDumper();
         return "Value [" . $dumper->describeValue($compare) .
                 "] should be type [" . $this->_type . "]";
     }
