@@ -123,7 +123,7 @@ class SimpleTestCase {
      *    @access public
      */
     function run(&$reporter) {
-        $context = &SimpleTest::getContext();
+        $context = SimpleTest::getContext();
         $context->setTest($this);
         $context->setReporter($reporter);
         $this->_reporter = &$reporter;
@@ -138,7 +138,7 @@ class SimpleTestCase {
                     $reporter->paintCaseStart($this->getLabel());
                     $started = true;
                 }
-                $invoker = &$this->_reporter->createInvoker($this->createInvoker());
+                $invoker = $this->_reporter->createInvoker($this->createInvoker());
                 $invoker->before($method);
                 $invoker->invoke($method);
                 $invoker->after($method);
@@ -367,7 +367,7 @@ class SimpleTestCase {
      *    @access public
      *    @static
      */
-    function getSize() {
+    static function getSize() {
         return 1;
     }
 }
@@ -628,7 +628,7 @@ class TestSuite {
      *    @access public
      *    @static
      */
-    function getBaseTestCase($class) {
+    static function getBaseTestCase($class) {
         while ($class = get_parent_class($class)) {
             $class = strtolower($class);
             if ($class == 'simpletestcase' || $class == 'testsuite') {

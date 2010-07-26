@@ -91,7 +91,7 @@ class SimpleExpectation {
      *    @access public
      *    @static
      */
-    function isExpectation($expectation) {
+    static function isExpectation($expectation) {
         return is_object($expectation) &&
                 SimpleTestCompatibility::isA($expectation, 'SimpleExpectation');
     }
@@ -181,7 +181,7 @@ class TrueExpectation extends SimpleExpectation {
      *    @access public
      */
     function testMessage($compare) {
-        $dumper = &$this->_getDumper();
+        $dumper = $this->_getDumper();
         return 'Expected true, got [' . $dumper->describeValue($compare) . ']';
     }
 }
@@ -467,7 +467,7 @@ class ReferenceExpectation extends SimpleExpectation {
      *    @return boolean              True if correct.
      *    @access public
      */
-    function test(&$compare) {
+    function test($compare) {
         return SimpleTestCompatibility::isReference($this->_value, $compare);
     }
 

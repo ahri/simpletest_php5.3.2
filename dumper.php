@@ -349,7 +349,7 @@ class SimpleDumper {
      *    @access public
      *    @static
      */
-    function dump($variable) {
+    static function dump($variable) {
         ob_start();
         print_r($variable);
         $formatted = ob_get_contents();

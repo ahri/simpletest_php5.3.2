@@ -54,7 +54,8 @@ function tests_have_run() {
 function initial_file() {
     static $file = false;
     if (! $file) {
-        $file = reset(get_included_files());
+        $included_files = get_included_files();
+        $file = reset($included_files);
     }
     return $file;
 }

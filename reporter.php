@@ -59,7 +59,7 @@ class HtmlReporter extends SimpleReporter {
      *    @access public
      *    @static
      */
-    function sendNoCacheHeaders() {
+    static function sendNoCacheHeaders() {
         if (! headers_sent()) {
             header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
             header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
@@ -323,7 +323,7 @@ class SelectiveReporter extends SimpleReporterDecorator {
      *    @param string $just_this_case    Only this case or group will run.
      *    @param string $just_this_test    Only this test method will run.
      */
-    function SelectiveReporter(&$reporter, $just_this_case = false, $just_this_test = false) {
+    function SelectiveReporter($reporter, $just_this_case = false, $just_this_test = false) {
         if (isset($just_this_case) && $just_this_case) {
             $this->_just_this_case = strtolower($just_this_case);
             $this->_off();

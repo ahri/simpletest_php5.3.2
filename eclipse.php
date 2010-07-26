@@ -63,7 +63,7 @@ class EclipseReporter extends SimpleScorer {
      *    @return EclipseInvoker            Decorator with output buffering.
      *    @access public
      */
-    function createInvoker(&$invoker){
+    function createInvoker($invoker){
         $eclinvoker = new EclipseInvoker($invoker, $this->_listener);
         return $eclinvoker;
     }

@@ -19,7 +19,7 @@ class SimpleTestCompatibility {
      *    @access public
      *    @static
      */
-    function copy($object) {
+    static function copy($object) {
         if (version_compare(phpversion(), '5') >= 0) {
             eval('$copy = clone $object;');
             return $copy;
@@ -37,7 +37,7 @@ class SimpleTestCompatibility {
      *    @access public
      *    @static
      */
-    function isIdentical($first, $second) {
+    static function isIdentical($first, $second) {
         if (version_compare(phpversion(), '5') >= 0) {
             return SimpleTestCompatibility::_isIdenticalType($first, $second);
         }
@@ -55,7 +55,7 @@ class SimpleTestCompatibility {
      *    @access private
      *    @static
      */
-    function _isIdenticalType($first, $second) {
+    static function _isIdenticalType($first, $second) {
         if (gettype($first) != gettype($second)) {
             return false;
         }
@@ -84,7 +84,7 @@ class SimpleTestCompatibility {
      *    @access private
      *    @static
      */
-    function _isArrayOfIdenticalTypes($first, $second) {
+    static function _isArrayOfIdenticalTypes($first, $second) {
         if (array_keys($first) != array_keys($second)) {
             return false;
         }
@@ -107,7 +107,7 @@ class SimpleTestCompatibility {
      *    @access public
      *    @static
      */
-    function isReference(&$first, &$second) {
+    static function isReference(&$first, &$second) {
         if (version_compare(phpversion(), '5', '>=') && is_object($first)) {
             return ($first === $second);
         }
@@ -134,7 +134,7 @@ class SimpleTestCompatibility {
      *    @access public
      *    @static
      */
-    function isA($object, $class) {
+    static function isA($object, $class) {
         if (version_compare(phpversion(), '5') >= 0) {
             if (! class_exists($class, false)) {
                 if (function_exists('interface_exists')) {
@@ -160,7 +160,7 @@ class SimpleTestCompatibility {
      *    @access public
      *    @static
      */
-    function setTimeout($handle, $timeout) {
+    static function setTimeout($handle, $timeout) {
         if (function_exists('stream_set_timeout')) {
             stream_set_timeout($handle, $timeout, 0);
         } elseif (function_exists('socket_set_timeout')) {

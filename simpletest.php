@@ -32,7 +32,7 @@ class SimpleTest {
      *    @static
      *    @access public
      */
-    function getVersion() {
+    static function getVersion() {
         $content = file(dirname(__FILE__) . '/VERSION');
         return trim($content[0]);
     }
@@ -46,7 +46,7 @@ class SimpleTest {
      *    @static
      *    @access public
      */
-    function ignore($class) {
+    static function ignore($class) {
         $registry = &SimpleTest::_getRegistry();
         $registry['IgnoreList'][strtolower($class)] = true;
     }
@@ -66,8 +66,8 @@ class SimpleTest {
      *    @static
      *    @access public
      */
-    function ignoreParentsIfIgnored($classes) {
-        $registry = &SimpleTest::_getRegistry();
+    static function ignoreParentsIfIgnored($classes) {
+        $registry = SimpleTest::_getRegistry();
         foreach ($classes as $class) {
             if (SimpleTest::isIgnored($class)) {
                 $reflection = new SimpleReflection($class);
@@ -87,7 +87,7 @@ class SimpleTest {
      *   @access public
      *   @see preferred()
      */
-    function prefer(&$object) {
+    static function prefer(&$object) {
         $registry = &SimpleTest::_getRegistry();
         $registry['Preferred'][] = &$object;
     }
@@ -102,11 +102,11 @@ class SimpleTest {
      *   @return array|object|null
      *   @see prefer()
      */
-    function preferred($classes) {
+    static function preferred($classes) {
         if (! is_array($classes)) {
             $classes = array($classes);
         }
-        $registry = &SimpleTest::_getRegistry();
+        $registry = SimpleTest::_getRegistry();
         for ($i = count($registry['Preferred']) - 1; $i >= 0; $i--) {
             foreach ($classes as $class) {
                 if (SimpleTestCompatibility::isA($registry['Preferred'][$i], $class)) {
@@ -128,8 +128,8 @@ class SimpleTest {
      *    @access public
      *    @static
      */
-    function isIgnored($class) {
-        $registry = &SimpleTest::_getRegistry();
+    static function isIgnored($class) {
+        $registry = SimpleTest::_getRegistry();
         return isset($registry['IgnoreList'][strtolower($class)]);
     }
 
@@ -202,7 +202,7 @@ class SimpleTest {
      *    @access private
      *    @static
      */
-    function _getRegistry() {
+    static function _getRegistry() {
         static $registry = false;
         if (! $registry) {
             $registry = SimpleTest::_getDefaults();
@@ -217,7 +217,7 @@ class SimpleTest {
      *    @access public
      *    @static
      */
-    function getContext() {
+    static function getContext() {
         static $context = false;
         if (! $context) {
             $context = new SimpleTestContext();
@@ -231,7 +231,7 @@ class SimpleTest {
      *    @access private
      *    @static
      */
-    function _getDefaults() {
+    static function _getDefaults() {
         return array(
                 'StubBaseClass' => 'SimpleStub',
                 'MockBaseClass' => 'SimpleMock',
@@ -310,7 +310,6 @@ class SimpleTestContext {
      *    Accessor for the Singleton resource.
      *    @return object       Global resource.
      *    @access public
-     *    @static
      */
     function get($resource) {
         if (! isset($this->_resources[$resource])) {
@@ -415,21 +414,21 @@ class SimpleTestOptions extends SimpleTest {
     /**
      *    @deprecated
      */
-    function getVersion() {
+    static function getVersion() {
         return Simpletest::getVersion();
     }
 
     /**
      *    @deprecated
      */
-    function ignore($class) {
+    static function ignore($class) {
         return Simpletest::ignore($class);
     }
 
     /**
      *    @deprecated
      */
-    function isIgnored($class) {
+    static function isIgnored($class) {
         return Simpletest::isIgnored($class);
     }
 
