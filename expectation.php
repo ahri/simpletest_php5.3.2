@@ -528,7 +528,7 @@ class IdenticalExpectation extends EqualExpectation {
      *    @access public
      */
     function testMessage($compare) {
-        $dumper = &$this->_getDumper();
+        $dumper = $this->_getDumper();
         if ($this->test($compare)) {
             return "Identical expectation [" . $dumper->describeValue($this->_getValue()) . "]";
         } else {
